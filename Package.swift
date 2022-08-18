@@ -13,12 +13,10 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0"),
-        .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: "0.9.0"))
     ],
     targets: [
         .target(name: "ios2m1", dependencies: [
             .product(name: "ArgumentParser", package: "swift-argument-parser"),
-            "ZIPFoundation"
         ])
     ]
 )
