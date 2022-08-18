@@ -1,6 +1,5 @@
 import Foundation
 import ArgumentParser
-import ZIPFoundation
 
 struct ios2m1: ParsableCommand {
     
@@ -70,7 +69,9 @@ struct ios2m1: ParsableCommand {
             try deleteFolder(at: payloadFolder)
             
             print("Unzipping ipa...")
-            try FileManager.default.unzipItem(at: inputUrl, to: workFolder)
+            
+            /// using unzip instead.
+            shell("unzip -oq \(inputUrl.path) -d \(workFolder.path)")
             
             /// Get .app folder inside Payload
             let payloadContents = try FileManager.default.contentsOfDirectory(at: payloadFolder, includingPropertiesForKeys: nil)
